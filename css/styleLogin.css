@@ -1,0 +1,144 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    min-height: 115vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0px;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+}
+
+#pop {
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 115vh;
+    background-image: url(../images/bg-01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+form {
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    position: fixed;
+    top: 15%;
+    margin-left: 38%;
+    max-height: 354px;
+    width: 46%;
+    max-width: 314px;
+    height: 56%;
+    background: linear-gradient(#3cbcc52b, #f5ecec42, #908a8a33);
+    min-height: 332px;
+}
+
+.input {
+    margin-top: 8%;
+    margin-bottom: 0%;
+    margin-left: 16%;
+}
+
+.user {
+    font-family: 'Cairo', sans-serif;
+    margin-top: 10%;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #1f93b1;
+    background-color: #f7f9fa00;
+    width: 85%;
+    font-size: 115%;
+}
+
+.user:focus {
+    border-bottom: 1px solid white;
+}
+
+label {
+    display: block;
+    margin-top: 12%;
+    color: white;
+    font-size: 99%;
+}
+
+h1 {
+    MARGIN-TOP: 9px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #7ac8cc;
+}
+
+#black-layer {
+    position: absolute;
+    background-color: #00000061;
+    height: 100%;
+    width: 100%;
+}
+
+.alart {
+    display: none;
+    font-family: 'Cairo', sans-serif;
+    background-color: #f443368a;
+    font-size: 10px;
+    color: white;
+    padding: 5px;
+}
+
+button {
+    background: linear-gradient(#2697b5, #2f7375);
+    width: 20%;
+    height: 10%;
+    border-radius: 10px;
+    outline: none;
+    margin-top: 10%;
+    margin-left: 14%;
+}
+
+@media only screen and (max-width: 600px) {
+    .user {
+        margin-top: 4%;
+    }
+    form {
+        max-height: 309px;
+        border-radius: 15px;
+        position: fixed;
+        top: 17%;
+        margin-left: 13%;
+        width: 75%;
+        height: 50%;
+        background: linear-gradient(#fff9f908, #ffffff08);
+    }
+}
+
+@media only screen and (max-width:700px)and (orientation: landscape) {
+    .user {
+        margin-top: 4%;
+    }
+    form {
+        min-height: 300px;
+        border-radius: 15px;
+        position: fixed;
+        top: 3%;
+        margin-left: 23%;
+        width: 75%;
+        height: 89%;
+        background: linear-gradient(#3cbcc52b, #f5ecec42, #908a8a33);
+    }
+}
