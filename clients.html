@@ -1,62 +1,128 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="ar" dir="rtl">
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">الصفحة الرئيسية </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">العملاء</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">إحصائيات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">إشعارات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">تسجيل خروج</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- nav-->
+
+    <div class="container">
+        <h3 style="
+        border: 1px solid #00a1ff;
+        padding: 5vh;
+        border-radius: 73px;
+        /* font-size: 1rem; */
+        font-style: inherit;
+        padding-top: 2%;
+        text-align: center;
+        "> بيانات العميل</h3>
+
+        <!--     details form -->
+
+     
 
 
 
-<!-- navbar -->
 
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">الصفحة الرئيسية </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">العملاء</a>
-        </li>
-    
-        <li class="nav-item">
-          <a class="nav-link" href="#">إحصائيات</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">إشعارات</a>
-        </li>
-           <li class="nav-item">
-          <a class="nav-link" href="#">تسجيل خروج</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- nav-->
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">الإسم الثلاثي</label>
+            <input type="text" class="form-control" id="inputEmail4" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">الرقم الوطني</label>
+            <input type="number" class="form-control" id="inputPassword4" required>
+        </div>
+        <div class="col-6">
+            <label for="inputAddress" class="form-label">رقم الهاتف</label>
+            <input type="text" class="form-control" id="inputAddress"  required>
+        </div>
+        <div class="col-6">
+            <label for="inputAddress2" class="form-label">مكان السكن</label>
+            <input type="text" class="form-control" id="inputAddress2" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">الوظيفة</label>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
 
-    <h3  style="padding-left: 5%;
-    font-size: 1rem;
-    font-style: inherit; 
-      padding-top: 2%;"> بيانات العميل</h3>
+        <div class="col-md-6" style="
+        margin-top: 3vh;
+    ">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        ذكر
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        انثى
+                    </label>
+                </div>
+            </div>
 
-<!--     details form -->
 
-    <input class="form-control" type="text" style="    margin: 2%; width: 25%;" placeholder="الإسم الثلاثي" aria-label="default input example">
-   <input class="form-control" type="text" style="    margin: 2%; width: 25%;" placeholder="الرقم الوطني" aria-label="default input example">
-    <input class="form-control" type="text" style="    margin: 2%; width: 25%;" placeholder="رقم الهاتف" aria-label="default input example">
-    <input class="form-control" type="text" style="    margin: 2%; width: 25%;" placeholder="مكان السكن" aria-label="default input example">
-    <input class="form-control" type="text" style="    margin: 2%; width: 25%;" placeholder="الوظيفة" aria-label="default input example">
+        <div class="col-md-6">
+            <label for="inputZip" class="form-label">المبلغ الاجمالي</label>
+            <input type="text" class="form-control" id="inputZip" required>
+        </div>
+        <div class="col-6">
+            <label for="inputCity" class="form-label">عدد الاشهر</label>
+            <input type="number" class="form-control" id="inputCity" required>
+        </div>
 
-<!--     lable -->
-   <select class="form-select form-select-lg mb-3" style="    padding-left: 5%; margin-left: 2%; width: 25%;" aria-label=".form-select-lg example">
-  <option selected>الجنس</option>
-  <option value="1">ذكر</option>
-  <option value="2">أنثى</option>
- 
-</select>
-  </head>
+        <div class="col-12">
+            <label for="inputCity" class="form-label">تاريخ الاستحقاق </label>
+            <input type="date" class="form-control" id="inputCity" required>
+        </div>
+   
+        <div class="col-12" style="
+        /* margin: 10vh; */
+        text-align: center;
+        margin-top: 10vh;
+    ">
+                <button type="submit" class="btn btn-primary">تسجيل</button>
+            </div>
+    </form>
+</div>
+
+</body>
