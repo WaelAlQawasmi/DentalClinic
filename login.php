@@ -44,7 +44,7 @@ $link = new PDO($dsn, "root", "");
 
 
       <form name="formal" method="post" onsubmit="return validateForm()">
-        <h1> DC Team Portal </h1>
+        <h1> The Portal </h1>
         <div class="input">
           <label> username</label>
           <input type="text" require class="user" id="user" name="username" oninput="io()" onchange="document.activeElement.blur();">
