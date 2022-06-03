@@ -38,39 +38,39 @@ include "head.php"; ?>
 
 
 
-    <form class="row g-3">
+    <form class="row g-3" method="post">
         <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">الإسم الثلاثي</label>
-            <input type="text" class="form-control" id="inputEmail4" required>
+            <label for="inputEmail4" class="form-label" >الإسم الثلاثي</label>
+            <input type="text" class="form-control"  name="name" id="inputEmail4" required>
         </div>
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">الرقم الوطني</label>
-            <input type="number" class="form-control" id="inputPassword4" required>
+            <input type="number"  name="jordanid" class="form-control" id="inputPassword4" required>
         </div>
         <div class="col-6">
-            <label for="inputAddress" class="form-label">رقم الهاتف</label>
-            <input type="text" class="form-control" id="inputAddress"  required>
+            <label for="inputAddress" class="form-label" >رقم الهاتف</label>
+            <input type="number" name="phone" class="form-control" id="inputAddress"  required>
         </div>
         <div class="col-6">
             <label for="inputAddress2" class="form-label">مكان السكن</label>
-            <input type="text" class="form-control" id="inputAddress2" required>
+            <input type="text" name="address" class="form-control" id="inputAddress2" required>
         </div>
         <div class="col-md-6">
             <label for="inputCity" class="form-label">الوظيفة</label>
-            <input type="text" class="form-control" id="inputCity">
+            <input type="text"  name="job" class="form-control" id="inputCity">
         </div>
 
         <div class="col-md-6" style="
         margin-top: 3vh;
     ">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input name="sex" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         ذكر
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
+                    <input  name="sex" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
                     <label class="form-check-label" for="flexRadioDefault2">
                         انثى
                     </label>
@@ -80,16 +80,16 @@ include "head.php"; ?>
 
         <div class="col-md-6">
             <label for="inputZip" class="form-label">المبلغ الاجمالي</label>
-            <input type="text" class="form-control" id="inputZip" required>
+            <input type="text" name="totalcost"  class="form-control" id="inputZip" required>
         </div>
         <div class="col-6">
             <label for="inputCity" class="form-label">عدد الاشهر</label>
-            <input type="number" class="form-control" id="inputCity" required>
+            <input type="number"  name="manthes" class="form-control" id="inputCity" required>
         </div>
 
         <div class="col-12">
             <label for="inputCity" class="form-label">تاريخ الاستحقاق </label>
-            <input type="date" class="form-control" id="inputCity" required>
+            <input type="date"    name="dates" class="form-control" id="inputCity" required>
         </div>
    
         <div class="col-12" style="
@@ -97,9 +97,40 @@ include "head.php"; ?>
         text-align: center;
         margin-top: 10vh;
     ">
-                <button type="submit" class="btn btn-primary">تسجيل</button>
+                <button name="submit" type="submit" class="btn btn-primary">تسجيل</button>
             </div>
     </form>
 </div>
 
+
 </body>
+
+
+<?php 
+
+$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
+
+$link = new PDO($dsn, "root", "");
+
+if( isset ($_POST["submit"])){
+   $jordanid= $_POST["jordanid"];
+   $name= $_POST["name"];
+   $jordanid= $_POST["jordanid"];
+    $address=$_POST["address"];
+    $phone=$_POST["phone"];
+    $job=$_POST["job"];
+    $sex= $_POST["sex"];
+
+    $stmt = $link->prepare("INSERT INTO `clients` (`name`, `jordanid`, `phone`, `address`, `job`, `sex`)
+    VALUES (?,?,?,?,?,?);");
+    
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $jordanid);
+    $stmt->bindParam(3, $phone);
+    $stmt->bindParam(4, $address);
+    $stmt->bindParam(5, $job);
+    $stmt->bindParam(6, $sex);
+    $stmt->execute();
+ 
+}
+?>
