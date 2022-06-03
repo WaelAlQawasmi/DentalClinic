@@ -16,7 +16,7 @@ include "head.php"; ?>
 
 <h2>My Customers</h2>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
 
 <table id="myTable">
   <tr class="header">
