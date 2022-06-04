@@ -64,13 +64,13 @@ include "head.php"; ?>
         margin-top: 3vh;
     ">
                 <div class="form-check form-check-inline">
-                    <input name="sex" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input name="sex" class="form-check-input" type="radio"  value="ذكر" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         ذكر
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input  name="sex" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
+                    <input  name="sex" class="form-check-input" type="radio" name="flexRadioDefault" value="انثى" id="flexRadioDefault2" checked="">
                     <label class="form-check-label" for="flexRadioDefault2">
                         انثى
                     </label>
@@ -80,16 +80,16 @@ include "head.php"; ?>
 
         <div class="col-md-6">
             <label for="inputZip" class="form-label">المبلغ الاجمالي</label>
-            <input type="text" name="totalcost"  class="form-control" id="inputZip" required>
+            <input type="text" name="totalcost"  class="form-control" id="inputZip" >
         </div>
         <div class="col-6">
             <label for="inputCity" class="form-label">عدد الاشهر</label>
-            <input type="number"  name="manthes" class="form-control" id="inputCity" required>
+            <input type="number"  name="manthes" class="form-control" id="inputCity" >
         </div>
 
         <div class="col-12">
             <label for="inputCity" class="form-label">تاريخ الاستحقاق </label>
-            <input type="date"    name="dates" class="form-control" id="inputCity" required>
+            <input type="date"    name="dates" class="form-control" id="inputCity" >
         </div>
    
         <div class="col-12" style="
@@ -98,10 +98,10 @@ include "head.php"; ?>
         margin-top: 10vh;
     ">
                 <button name="submit" type="submit" class="btn btn-primary">تسجيل</button>
+                
             </div>
     </form>
 </div>
-
 
 </body>
 
@@ -113,6 +113,19 @@ $dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
 $link = new PDO($dsn, "root", "");
 
 if( isset ($_POST["submit"])){
+
+    
+   $jordanid= $_POST["jordanid"];
+    $stmt = $link->prepare("SELECT * FROM clients WHERE jordanid = :jid");
+    $stmt->bindParam(':jid', $jordanid);
+ 
+    $stmt->execute();
+    $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($arr) {
+echo " <script> alert(\"الرقم الوطني موجود \")</script>";
+    }
+    else{
+
    $jordanid= $_POST["jordanid"];
    $name= $_POST["name"];
    $jordanid= $_POST["jordanid"];
@@ -131,6 +144,8 @@ if( isset ($_POST["submit"])){
     $stmt->bindParam(5, $job);
     $stmt->bindParam(6, $sex);
     $stmt->execute();
+    echo ' <script> alert("تم التسجيل بنجاح")</script>';
  
+}
 }
 ?>

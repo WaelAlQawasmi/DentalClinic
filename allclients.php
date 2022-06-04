@@ -40,6 +40,30 @@ include "head.php"; ?>
 <!--   table -->
     <div class="container" style="padding-left: 20%;" >
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+
+    
+ 
+
+    <div class="form-check" style="
+    display: flex;
+    /* text-align: center; */
+    justify-content: space-around;
+">
+        <input class="form-check-input" type="checkbox" id="gridCheck1" style="
+    display: block;
+    margin-right: 15%;
+">
+        <label class="form-check-label" for="gridCheck1" style="
+    display: block;
+">
+        الرقم الوطني
+        </label>
+      </div>
+      
+
+
+
     <table class="table" style="margin: 10%; 
  "  id="myTable">
   <thead>
@@ -51,42 +75,33 @@ include "head.php"; ?>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>9981049265</td>
-      <td>enter</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>9981049265</td>
-      <td>@fat</td>
-    </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>9981049265</td>
-      <td>@fat</td>
-    </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>9981049265</td>
-      <td>@fat</td>
-    </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>9981049265</td>
-      <td>@fat</td>
-    </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>9981049265</td>
-      <td>@fat</td>
-    </tr>
+
+
+  <?php
+$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
+$link = new PDO($dsn, "root", "");
+   $stmt = $link->prepare("SELECT * FROM clients");
+   $stmt->execute();
+   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   $c=0;
+   foreach ($arr as $value) {
+
+    $c++;
+
+    echo "<tr>
+    <th scope=\"row\">$c</th>
+    <td>$value[name]</td>
+    <td>$value[jordanid]</td>
+    <td><a href=\"profile.php?jordanid=$value[jordanid]\">ادخل</a></td>
+  </tr>";
+ 
+
+
+    
+  }
+?>
+   
+    
     
   </tbody>
 </table>
@@ -95,13 +110,20 @@ include "head.php"; ?>
 
 <script>
 function myFunction() {
+  var checkBox= document.getElementById("gridCheck1");
+  var inxex=0;
+  if (checkBox.checked == true){
+    inxex=1;
+  } else {
+    inxex=0;
+  }
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[inxex];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -126,3 +148,5 @@ border-radius: 50px;
 font-size: 1.5em;
 box-shadow: 0 6px 6px rgb(0 0 0 / 60%);" > <a href="./addClient.php">+</a></button>
 </body>
+
+
