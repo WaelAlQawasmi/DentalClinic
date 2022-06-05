@@ -76,21 +76,6 @@ include "head.php"; ?>
                     </label>
                 </div>
             </div>
-
-
-        <div class="col-md-6">
-            <label for="inputZip" class="form-label">المبلغ الاجمالي</label>
-            <input type="text" name="totalcost"  class="form-control" id="inputZip" >
-        </div>
-        <div class="col-6">
-            <label for="inputCity" class="form-label">عدد الاشهر</label>
-            <input type="number"  name="manthes" class="form-control" id="inputCity" >
-        </div>
-
-        <div class="col-12">
-            <label for="inputCity" class="form-label">تاريخ الاستحقاق </label>
-            <input type="date"    name="dates" class="form-control" id="inputCity" >
-        </div>
    
         <div class="col-12" style="
         /* margin: 10vh; */

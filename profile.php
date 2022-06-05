@@ -67,9 +67,9 @@ else{
   <label class="btn btn-outline-info ">
     <input type="radio" name="options" id="option1" autocomplete="off" checked> تسديد مبلغ
   </label>
-  <label class="btn btn btn-outline-primary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> اضافة مبلغ
-  </label>
+ 
+    <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"  autocomplete="off"> اضافة مبلغ</button>
+
   <label class="btn btn-outline-success">
     <input type="radio" name="options" id="option3" autocomplete="off"> اضافة حالة
   </label>
@@ -236,6 +236,61 @@ else{
 
 
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">اضافة مبلغ </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
+            <input type="text"   name="total" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"> عدد الاشهر</label>
+            <input type="text"  name="months"  class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">يوم الاسنحقاق</label>
+            <select class="form-select" name="date" aria-label="Default select example"  id="select">
+  
+          
+<script>
+let num = document.getElementById("select");
+
+for (let index = 1; index < 29; index++) {
+
+  let option = document.createElement("option");
+  option.value=index;
+  option.innerHTML=index;
+ num.appendChild(option);
+ //consol.log(index);
+}
+</script>
+
+
+</select>
+          </div>
+
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button name="submit" type="submit" class="btn btn-primary">Send message</button>
+      </div>
+        </form>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -243,3 +298,32 @@ else{
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+
+<?php 
+
+
+
+if( isset ($_POST["submit"])){
+
+    
+  $dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
+
+$link = new PDO($dsn, "root", "");
+$total=$_POST['total'];
+$months=$_POST['months'];
+$tdated=$_POST['date'];
+    $stmt = $link->prepare("INSERT INTO `pays` (`clintid`, `tdated`, `total`, `monthg`)
+    VALUES (?,?,?,?);");
+    
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2, $tdated);
+    $stmt->bindParam(3, $total);
+    $stmt->bindParam(4,$months);
+    $stmt->execute();
+    echo ' <script> alert("تم التسجيل بنجاح")</script>';
+ 
+
+}
+?>
