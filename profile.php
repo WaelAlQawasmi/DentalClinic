@@ -15,6 +15,7 @@
   
   
   <?php
+  date_default_timezone_set('Asia/Amman');
 include "head.php"; 
 $dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
 $link = new PDO($dsn, "root", "");
@@ -78,30 +79,9 @@ else{
                   </div>
                 </div>
               </div>
-              <!-- <div class="card mt-3">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-                    <span class="text-secondary">https://bootdey.com</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
-                    <span class="text-secondary">bootdey</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
-                    <span class="text-secondary">@bootdey</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
-                    <span class="text-secondary">bootdey</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                    <span class="text-secondary">bootdey</span>
-                  </li>
-                </ul>
-              </div> -->
+   
+
+
             </div>
             <div class="col-md-8">
               <div class="card mb-3">
@@ -225,6 +205,152 @@ else{
           </div>
 
         </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="col-sm-9" style="    margin: auto;">
+
+
+<nav class="nav">
+  <a class="nav-link" href="#home"  data-toggle="tab">الدفعات</a>
+  <a class="nav-link" href="#messages" data-toggle="tab">حالة المريض</a>
+  <a class="nav-link" href="#settings" data-toggle="tab">الملخص</a>
+
+</nav>
+<div class="tab-content">
+    <div class="tab-pane active" id="home">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>تاريخ الدفعة</th>
+                        <th>قيمة الدفعة</th>
+                      
+                    </tr>
+                </thead>
+                <tbody id="items">
+              
+                    <tr>
+                        <td>1</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <hr>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="pagination" id="myPager"></ul>
+                </div>
+            </div>
+        </div>
+        <!--/table-resp-->
+
+        <hr>
+
+    </div>
+    <!--/tab-pane-->
+    <div class="tab-pane" id="messages">
+
+        <h2></h2>
+
+        <ul class="list-group">
+            <li class="list-group-item text-muted">Inbox</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+            <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+
+        </ul>
+
+    </div>
+    <!--/tab-pane-->
+    <div class="tab-pane" id="settings">
+
+        <hr>
+        
+
+        <?php
+                  $jordanid= $_GET["jordanid"];
+                  $stmt = $link->prepare("SELECT * FROM pays WHERE clintid = :jid");
+                  $stmt->bindParam(':jid', $jordanid);
+               
+                  $stmt->execute();
+                  $arrPays = $stmt->fetch(PDO::FETCH_ASSOC);
+                  $name;
+                  $OrgialTotal=null;
+                  $monthg=null;
+                  $tdated=null;
+                  if ($arrPays !=null) {
+              $OrgialTotal=$arrPays["total"];
+              $monthg=$arrPays["monthg"];
+              $tdated=$arrPays["tdated"];}
+                  
+                  ?>
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="first_name">
+                        <h4>القيمة المطلوبة</h4></label>
+                    <input type="text" class="form-control" name="total" id="first_name"  value="<?php echo $OrgialTotal;?>" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="last_name">
+                        <h4> يوم الاستحقاق</h4></label>
+                    <input type="text"  class="form-control" name="last_name" id="last_name"  title="enter your last name if any." value="<?php echo $tdated;?>" disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="phone">
+                        <h4> عدد الاشهر</h4></label>
+                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $monthg;?>" disabled>
+                </div>
+            </div>
+
+            
+            <!-- <div class="form-group">
+                <div class="col-xs-12">
+                    <br>
+                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                </div>
+            </div> -->
+
+      
+    </div>
+
+</div>
+<!--/tab-pane-->
+</div>
+<!--/tab-content-->
+
+</div>
+<!--/col-9-->
+</div>
+
+
     </div>
 
 
@@ -235,6 +361,7 @@ else{
 
 
 
+    <div class="container">
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -249,11 +376,11 @@ else{
         <form method="post">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
-            <input type="text"   name="total" class="form-control" id="recipient-name">
+            <input type="number"   name="total" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label"> عدد الاشهر</label>
-            <input type="text"  name="months"  class="form-control" id="recipient-name">
+            <input type="number"   name="months"  class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">يوم الاسنحقاق</label>
@@ -278,8 +405,8 @@ for (let index = 1; index < 29; index++) {
           </div>
 
           <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button name="submit" type="submit" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+        <button name="submit" type="submit" class="btn btn-primary"> اضافة</button>
       </div>
         </form>
       </div>
@@ -287,6 +414,11 @@ for (let index = 1; index < 29; index++) {
     </div>
   </div>
 </div>
+
+
+
+
+
 
 
 
@@ -314,6 +446,8 @@ $link = new PDO($dsn, "root", "");
 $total=$_POST['total'];
 $months=$_POST['months'];
 $tdated=$_POST['date'];
+if($arrPays==null){
+  if(is_integer((int)$total)&&is_integer((int)$months)){
     $stmt = $link->prepare("INSERT INTO `pays` (`clintid`, `tdated`, `total`, `monthg`)
     VALUES (?,?,?,?);");
     
@@ -322,8 +456,55 @@ $tdated=$_POST['date'];
     $stmt->bindParam(3, $total);
     $stmt->bindParam(4,$months);
     $stmt->execute();
-    echo ' <script> alert("تم التسجيل بنجاح")</script>';
- 
 
+
+    $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
+    VALUES (?,?,?,?,?);");
+    $opration= "adding-firtTime";
+    $date=date(" Y-m-d h:i:sa");
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2,$opration);
+    $stmt->bindParam(3, $total);
+    $stmt->bindParam(4,$date);
+    $stmt->bindParam(5,$_SESSION['username']);
+    $stmt->execute();
+
+    echo ' <script> alert("تم التسجيل بنجاح")</script>';
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+else{
+  echo ' <script> alert(" ادخلت قيم خاطئة")</script>';
+}
+}
+else{
+ 
+  
+  if(is_int((int)$_POST['total'])&&is_int((int)$months)){
+    $total2=$OrgialTotal+$_POST['total'];
+
+    $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
+    VALUES (?,?,?,?,?);");
+    $opration= "adding";
+    $date=date(" Y-m-d h:i:sa");
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2,$opration);
+    $stmt->bindParam(3, $total);
+    $stmt->bindParam(4,$date);
+    $stmt->bindParam(5,$_SESSION['username']);
+    $stmt->execute();
+
+
+  $sql = "UPDATE pays SET tdated=?, monthg=?, total=? WHERE clintid=?";
+  $stmt= $link->prepare($sql);
+  $stmt->execute([$tdated, $months, $total2, $jordanid]);
+  echo ' <script> alert("تم التسجيل بنجاح")</script>';
+  echo "<meta http-equiv='refresh' content='0'>";
+
+  }
+  else{
+    echo " ادخلت قيم خاطئة";
+    echo ' <script> alert(" ادخلت قيم خاطئة")</script>';
+  }
+}
 }
 ?>
