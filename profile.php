@@ -65,10 +65,9 @@ else{
                      
 
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-outline-info ">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> تسديد مبلغ
-  </label>
  
+  <button  class="btn btn  btn-outline-info" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"  autocomplete="off"> تسديد مبلغ</button>
+
     <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"  autocomplete="off"> اضافة مبلغ</button>
 
   <label class="btn btn-outline-success">
@@ -233,19 +232,39 @@ else{
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>تاريخ الدفعة</th>
                         <th>قيمة الدفعة</th>
+                        <th>تاريخ الدفعة</th>
                       
                     </tr>
                 </thead>
                 <tbody id="items">
               
-                    <tr>
-                        <td>1</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        
-                    </tr>
+
+                <?php
+$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
+$link = new PDO($dsn, "root", "");
+   $stmt = $link->prepare("SELECT * FROM `allpasys` WHERE clintid = :jid");
+   $stmt->bindParam(':jid', $jordanid);
+   $stmt->execute();
+   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   $c=0;
+   foreach ($arr as $value) {
+
+    $c++;
+
+    echo "<tr>
+    <th scope=\"row\">$c</th>
+    <td>$value[amount]</td>
+    <td>$value[date]</td>
+ 
+  </tr>";
+ 
+
+
+    
+  }
+?>
+                
                     
                 </tbody>
             </table>
@@ -261,8 +280,8 @@ else{
         <hr>
 
     </div>
-    <!--/tab-pane-->
-    <div class="tab-pane" id="messages">
+    <!--/tab-pane  حالة المريض-->
+    <!-- <div class="tab-pane" id="messages">
 
         <h2></h2>
 
@@ -279,7 +298,7 @@ else{
 
         </ul>
 
-    </div>
+    </div> -->
     <!--/tab-pane-->
     <div class="tab-pane" id="settings">
 
@@ -316,7 +335,7 @@ else{
                 <div class="col-xs-6">
                     <label for="last_name">
                         <h4> يوم الاستحقاق</h4></label>
-                    <input type="text"  class="form-control" name="last_name" id="last_name"  title="enter your last name if any." value="<?php echo $tdated;?>" disabled>
+                    <input type="text"  class="form-control" name="last_name" id="last_name"  title="enter your last name if any." value="<?php echo $tdated." من كل شهر";?>" disabled>
                 </div>
             </div>
 
@@ -328,6 +347,16 @@ else{
                     <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $monthg;?>" disabled>
                 </div>
             </div>
+
+            
+            <div class="form-group">
+
+<div class="col-xs-6">
+    <label for="phone">
+        <h4>  قيمة الدفعة الشهرية</h4></label>
+    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $OrgialTotal/$monthg." JD";?>" disabled>
+</div>
+</div>
 
             
             <!-- <div class="form-group">
@@ -358,7 +387,7 @@ else{
 
 
 
-
+<!-- اضافة مبلغ -->
 
 
     <div class="container">
@@ -420,6 +449,49 @@ for (let index = 1; index < 29; index++) {
 
 
 
+<!-- اضافة دفعة -->
+<div class="container">
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form method="post">
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
+        <input type="number"   name="amount" class="form-control" id="recipient-name">
+      </div>
+    
+
+
+      <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+    <button name="submit2" type="submit" class="btn btn-primary"> اضافة</button>
+  </div>
+    </form>
+  </div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -435,7 +507,60 @@ for (let index = 1; index < 29; index++) {
 
 <?php 
 
+$date=date(" Y-m-d h:i:sa");
+// اضافة دفعة
+if( isset ($_POST["submit2"])){
 
+    
+  $dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
+
+$link = new PDO($dsn, "root", "");
+$amount=$_POST['amount'];
+
+  if(is_integer((int)$amount)){
+    $stmt = $link->prepare("INSERT INTO `allpasys` (`clintid`, `amount`, `date`, `user`)  
+    VALUES (?,?,?,?);");
+    
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2, $amount);
+    $stmt->bindParam(3, $date);
+    $stmt->bindParam(4,$_SESSION['username']);
+    $stmt->execute();
+
+
+    $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
+    VALUES (?,?,?,?,?);");
+    $opration= "اضافة دفعة";
+    $date=date(" Y-m-d h:i:sa");
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2,$opration);
+    $stmt->bindParam(3, $amount);
+    $stmt->bindParam(4,$date);
+    $stmt->bindParam(5,$_SESSION['username']);
+    $stmt->execute();
+
+    echo ' <script> alert("تم التسجيل بنجاح")</script>';
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+else{
+  echo ' <script> alert(" ادخلت قيم خاطئة")</script>';
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//اضافة مبلغ
 
 if( isset ($_POST["submit"])){
 
@@ -460,7 +585,7 @@ if($arrPays==null){
 
     $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
     VALUES (?,?,?,?,?);");
-    $opration= "adding-firtTime";
+    $opration= "اضافة مبلغ لاول مرة";
     $date=date(" Y-m-d h:i:sa");
     $stmt->bindParam(1, $jordanid);
     $stmt->bindParam(2,$opration);
@@ -484,7 +609,7 @@ else{
 
     $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
     VALUES (?,?,?,?,?);");
-    $opration= "adding";
+    $opration= "اضافة مبلغ";
     $date=date(" Y-m-d h:i:sa");
     $stmt->bindParam(1, $jordanid);
     $stmt->bindParam(2,$opration);
