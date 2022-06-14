@@ -1,14 +1,5 @@
 <?php
-
-session_start();
-
-$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
-
-$link = new PDO($dsn, "root", "");
-
-// Check connection
-?>
-
+include "DBconnection.php"; ?>
 
 <!DOCTYPE html>
 <html>
@@ -70,7 +61,6 @@ $link = new PDO($dsn, "root", "");
         $name = htmlspecialchars($_POST['username']); //xss
         $pass = htmlspecialchars($_POST['password']); //xss
         if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
-          echo $_POST['g-recaptcha'];
           $url = " https://www.google.com/recaptcha/api/siteverify";
           $pap_k = "6LcwgMsZAAAAADPSjYm8ZxxjdkrdQxyHepjPlvJs";
           $secretAPIkey = '6LcwgMsZAAAAAOm2MIDmGMhlZ3rXq0EEUBLKAai';

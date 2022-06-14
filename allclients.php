@@ -31,7 +31,9 @@
 
   
     <?php
-include "head.php"; ?>
+include "head.php"; 
+include "DBconnection.php"; 
+?>
     <!-- nav-->
 
 
@@ -78,8 +80,7 @@ include "head.php"; ?>
 
 
   <?php
-$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
-$link = new PDO($dsn, "root", "");
+
    $stmt = $link->prepare("SELECT * FROM clients");
    $stmt->execute();
    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
