@@ -17,8 +17,8 @@
   <?php
   date_default_timezone_set('Asia/Amman');
 include "head.php"; 
-$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
-$link = new PDO($dsn, "root", "");
+include "DBconnection.php"; 
+
 
 $jordanid= $_GET["jordanid"];
     $stmt = $link->prepare("SELECT * FROM clients WHERE jordanid = :jid");
@@ -66,7 +66,7 @@ else{
 
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
  
-  <button  class="btn btn  btn-outline-info" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"  autocomplete="off"> تسديد مبلغ</button>
+  <button  class="btn btn  btn-outline-info" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"> تسديد مبلغ</button>
 
     <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"  autocomplete="off"> اضافة مبلغ</button>
 
@@ -241,9 +241,8 @@ else{
               
 
                 <?php
-$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
-$link = new PDO($dsn, "root", "");
-   $stmt = $link->prepare("SELECT * FROM `allpasys` WHERE clintid = :jid");
+
+   $stmt = $link->prepare("SELECT * FROM `pasys` WHERE clintid = :jid");
    $stmt->bindParam(':jid', $jordanid);
    $stmt->execute();
    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -280,8 +279,8 @@ $link = new PDO($dsn, "root", "");
         <hr>
 
     </div>
-    <!--/tab-pane  حالة المريض-->
-    <!-- <div class="tab-pane" id="messages">
+    <!--/tab-pane-->
+    <div class="tab-pane" id="messages">
 
         <h2></h2>
 
@@ -298,7 +297,7 @@ $link = new PDO($dsn, "root", "");
 
         </ul>
 
-    </div> -->
+    </div>
     <!--/tab-pane-->
     <div class="tab-pane" id="settings">
 
@@ -307,19 +306,21 @@ $link = new PDO($dsn, "root", "");
 
         <?php
                   $jordanid= $_GET["jordanid"];
-                  $stmt = $link->prepare("SELECT * FROM pays WHERE clintid = :jid");
+                  $stmt = $link->prepare("SELECT * FROM required_amounts WHERE clintid = :jid");
                   $stmt->bindParam(':jid', $jordanid);
                
                   $stmt->execute();
                   $arrPays = $stmt->fetch(PDO::FETCH_ASSOC);
                   $name;
-                  $OrgialTotal=null;
-                  $monthg=null;
-                  $tdated=null;
+                  $OrgialTotal="null";
+                  $monthg="null";
+                  $tdated="null";
+                  $mpay=0;
                   if ($arrPays !=null) {
               $OrgialTotal=$arrPays["total"];
               $monthg=$arrPays["monthg"];
-              $tdated=$arrPays["tdated"];}
+              $tdated=$arrPays["tdated"];
+            $mpay=$OrgialTotal/$monthg;}
                   
                   ?>
             <div class="form-group">
@@ -354,7 +355,7 @@ $link = new PDO($dsn, "root", "");
 <div class="col-xs-6">
     <label for="phone">
         <h4>  قيمة الدفعة الشهرية</h4></label>
-    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $OrgialTotal/$monthg." JD";?>" disabled>
+    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $mpay ." JD";?>" disabled>
 </div>
 </div>
 
@@ -442,14 +443,15 @@ for (let index = 1; index < 29; index++) {
  
     </div>
   </div>
-</div>
+
+  </div>
 
 
 
 
+<!-- 
+اضافة دفعة --> 
 
-
-<!-- اضافة دفعة -->
 <div class="container">
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -479,7 +481,7 @@ for (let index = 1; index < 29; index++) {
 
 </div>
 </div>
-</div>
+
 
 
 
@@ -507,24 +509,21 @@ for (let index = 1; index < 29; index++) {
 
 <?php 
 
-$date=date(" Y-m-d h:i:sa");
+$date=date("Y-m-d h:i:sa");
 // اضافة دفعة
 if( isset ($_POST["submit2"])){
 
     
-  $dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
-
-$link = new PDO($dsn, "root", "");
+  
 $amount=$_POST['amount'];
 
   if(is_integer((int)$amount)){
-    $stmt = $link->prepare("INSERT INTO `allpasys` (`clintid`, `amount`, `date`, `user`)  
-    VALUES (?,?,?,?);");
+    $stmt = $link->prepare("INSERT INTO `pasys` (`clintid`, `amount`, `date`)  
+    VALUES (?,?,?);");
     
     $stmt->bindParam(1, $jordanid);
     $stmt->bindParam(2, $amount);
     $stmt->bindParam(3, $date);
-    $stmt->bindParam(4,$_SESSION['username']);
     $stmt->execute();
 
 
@@ -565,15 +564,13 @@ else{
 if( isset ($_POST["submit"])){
 
     
-  $dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
 
-$link = new PDO($dsn, "root", "");
 $total=$_POST['total'];
 $months=$_POST['months'];
 $tdated=$_POST['date'];
 if($arrPays==null){
   if(is_integer((int)$total)&&is_integer((int)$months)){
-    $stmt = $link->prepare("INSERT INTO `pays` (`clintid`, `tdated`, `total`, `monthg`)
+    $stmt = $link->prepare("INSERT INTO `required_amounts` (`clintid`, `tdated`, `total`, `monthg`)
     VALUES (?,?,?,?);");
     
     $stmt->bindParam(1, $jordanid);
@@ -619,7 +616,7 @@ else{
     $stmt->execute();
 
 
-  $sql = "UPDATE pays SET tdated=?, monthg=?, total=? WHERE clintid=?";
+  $sql = "UPDATE required_amounts SET tdated=?, monthg=?, total=? WHERE clintid=?";
   $stmt= $link->prepare($sql);
   $stmt->execute([$tdated, $months, $total2, $jordanid]);
   echo ' <script> alert("تم التسجيل بنجاح")</script>';

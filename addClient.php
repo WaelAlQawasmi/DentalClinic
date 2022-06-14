@@ -93,9 +93,7 @@ include "head.php"; ?>
 
 <?php 
 
-$dsn = "mysql:host=127.0.0.1;dbname=dcteam_dcteam;charset=utf8mb4";
-
-$link = new PDO($dsn, "root", "");
+include "DBconnection.php"; 
 
 if( isset ($_POST["submit"])){
 
