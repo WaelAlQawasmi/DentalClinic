@@ -1,5 +1,11 @@
 
 <!doctype html>
+<?php
+
+date_default_timezone_set('Asia/Amman');
+include "head.php"; 
+include "DBconnection.php"; 
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -15,9 +21,9 @@
   
   
   <?php
-  date_default_timezone_set('Asia/Amman');
-include "head.php"; 
-include "DBconnection.php"; 
+
+
+
 
 
 $jordanid= $_GET["jordanid"];
@@ -303,18 +309,29 @@ else{
 
         <hr>
         
-
         <?php
                   $jordanid= $_GET["jordanid"];
+
+                  $stmt = $link->prepare("SELECT SUM(amount) AS paied FROM `pasys` WHERE `clintid`=:jid GROUP BY `clintid`;");
+                  $stmt->bindParam(':jid', $jordanid);
+               
+                  $stmt->execute();
+                  $arrPays = $stmt->fetch(PDO::FETCH_ASSOC);
+                  $totalPaied=0;
+                  if ($arrPays !=null) {
+                    $totalPaied=$arrPays["paied"];}
+
+
+                  
                   $stmt = $link->prepare("SELECT * FROM required_amounts WHERE clintid = :jid");
                   $stmt->bindParam(':jid', $jordanid);
                
                   $stmt->execute();
                   $arrPays = $stmt->fetch(PDO::FETCH_ASSOC);
                   $name;
-                  $OrgialTotal="null";
-                  $monthg="null";
-                  $tdated="null";
+                  $OrgialTotal=0;
+                  $monthg=0;
+                  $tdated=0;
                   $mpay=0;
                   if ($arrPays !=null) {
               $OrgialTotal=$arrPays["total"];
@@ -328,9 +345,31 @@ else{
                 <div class="col-xs-6">
                     <label for="first_name">
                         <h4>القيمة المطلوبة</h4></label>
-                    <input type="text" class="form-control" name="total" id="first_name"  value="<?php echo $OrgialTotal;?>" disabled>
+                    <input type="text" class="form-control" name="total" id="first_name"  value="<?php echo $OrgialTotal."JD";?>" disabled>
                 </div>
             </div>
+
+
+
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="phone">
+                        <h4>  القيمة المسددة</h4></label>
+                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $totalPaied;?>" disabled>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="phone">
+                        <h4>   المبلغ المتبقي</h4></label>
+                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $OrgialTotal-$totalPaied;?>" disabled>
+                </div>
+            </div>
+
             <div class="form-group">
 
                 <div class="col-xs-6">
@@ -509,13 +548,14 @@ for (let index = 1; index < 29; index++) {
 
 <?php 
 
-$date=date("Y-m-d h:i:sa");
+$date=date("Y-m-d");
 // اضافة دفعة
 if( isset ($_POST["submit2"])){
 
     
   
 $amount=$_POST['amount'];
+
 
   if(is_integer((int)$amount)){
     $stmt = $link->prepare("INSERT INTO `pasys` (`clintid`, `amount`, `date`)  
@@ -525,6 +565,17 @@ $amount=$_POST['amount'];
     $stmt->bindParam(2, $amount);
     $stmt->bindParam(3, $date);
     $stmt->execute();
+
+
+    $stmt = $link->prepare("DELETE FROM notifications WHERE `notifications`.`jordanid` = :da");
+    
+
+
+    $stmt->bindParam(":da", $jordanid);
+
+    $stmt->execute();
+
+
 
 
     $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
