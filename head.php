@@ -1,6 +1,7 @@
 
+
  <?php
- 
+ // to chech he in othrize
  session_start();
  if(!isset($_SESSION['username']))
  {
@@ -11,20 +12,21 @@
      <?php
  }
 
+// connection to DB
+ include "DBconnection.php";
 
 
-
-
-
+// TO SET TIME ZONE
 date_default_timezone_set('Asia/Amman');
+ 
 
-include "DBconnection.php"; 
+
+
+// to  SELECT the user that muse pay  to day , tomorow and after tomoowro 
 $daDay=date('d');
 $afterday=date('d', strtotime(' + 1 days'));
 $aftertwoday=date('d', strtotime(' + 2 days'));
 
-//echo $dateDay;
-// SELECT required_amounts.clintid,required_amounts.total ,SUM(pasys.amount) AS paied FROM required_amounts INNER JOIN pasys GROUP BY pasys.clintid;
 
                 $stmt = $link->prepare("SELECT required_amounts.clintid AS cid ,required_amounts.total AS ctotal ,SUM(pasys.amount) AS paied , clients.name AS cname FROM required_amounts LEFT JOIN pasys ON required_amounts.clintid=pasys.clintid LEFT JOIN clients ON  required_amounts.clintid =clients.jordanid WHERE required_amounts.tdated =:da OR required_amounts.tdated = :da2 OR required_amounts.tdated = :da3 GROUP BY required_amounts.clintid;");
                   $stmt->bindParam(':da', $daDay);
@@ -46,7 +48,7 @@ $aftertwoday=date('d', strtotime(' + 2 days'));
  <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<title>DC-team</title>
+<title>عيادة الاسنان</title>
 <meta charset="UTF-8" />
 
 <meta name="description" content="test Web " />
@@ -60,20 +62,13 @@ $aftertwoday=date('d', strtotime(' + 2 days'));
 <link rel="apple-touch-icon" href="images/DC.jpg">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    
-
-
-
-
-
 </head>
 <body>
   
 
 
 
-
+<!-- nav bar  start -->
 
 <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -93,7 +88,7 @@ $aftertwoday=date('d', strtotime(' + 2 days'));
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " id="myBtn"  href="#">
-                  الاشعارات
+                                              الاشعارات
                         </a>
                     </li>
                    
@@ -112,17 +107,25 @@ $aftertwoday=date('d', strtotime(' + 2 days'));
 
 
 
+<!-- nav bar  end -->
 
+
+<!-- notofication content start -->
     <link rel="stylesheet" href="css/head2.css">
 
     <div id="myModal" class="modal">
 
-<!-- Modal content -->
+
 <div class="modal-content">
   <span class="close">&times;</span>
 
 
-  <?php    
+  <?php  
+  
+  
+
+  // to insert  to notofication if not pied to dat or before three day
+
                         
  foreach ($arr as $value) {
 
@@ -161,6 +164,12 @@ $stmt2->execute();
 }
 }
 
+
+
+
+
+// to select from the notofications
+
 $stmt = $link->prepare("SELECT notifications.jordanid AS jidc, clients.name AS nameofclint FROM `notifications` LEFT JOIN clients ON notifications.jordanid=clients.jordanid;");
 $stmt->execute();
 
@@ -183,10 +192,14 @@ echo "<span>
 
 </div>
 
+
+
 </div>
 
 
-    <!-- nav-->
+
+
+    <!-- notofication content end -->
     <script src="js/dash.js"></script>
     <script src="js/js.js"></script>
 

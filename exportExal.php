@@ -1,5 +1,5 @@
 <?php
-//Add script to read MySQL data and export to excel
+
 include("read_and_export.php");
 include "head.php";
 

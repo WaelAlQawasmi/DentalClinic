@@ -1,12 +1,13 @@
 
 <!doctype html>
+<html lang="en" >
 <?php
 
 date_default_timezone_set('Asia/Amman');
 include "head.php"; 
 include "DBconnection.php"; 
 ?>
-<html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -52,7 +53,7 @@ else{
 
     ?>
 
-  <div class="container">
+  <div class="container" id="html">
     <div class="main-body">
     
           <!-- Breadcrumb -->
@@ -140,69 +141,7 @@ else{
                   </div>
                   <hr>
                   <div class="row">
-                    <!-- <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+               
 
 
 
@@ -411,13 +350,7 @@ else{
 </div>
 
             
-            <!-- <div class="form-group">
-                <div class="col-xs-12">
-                    <br>
-                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                </div>
-            </div> -->
+         
 
       
     </div>
@@ -542,7 +475,7 @@ for (let index = 1; index < 29; index++) {
 
 
 <!-- 
-اضافة دفعة --> 
+اضافة حالة --> 
 
 <div class="container">
 
@@ -588,13 +521,6 @@ for (let index = 1; index < 29; index++) {
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
 
 
 
@@ -735,6 +661,8 @@ else{
 
 
 
+
+
 // اضافة حالة
 
 
@@ -774,3 +702,18 @@ if( isset ($_POST["submit3"])){
   }
 
 ?>
+
+
+<script type="text/javascript">  
+document.body.requestFullscreen();
+</script> 
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
