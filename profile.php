@@ -1,6 +1,13 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="en" >
+<?php
+
+date_default_timezone_set('Asia/Amman');
+include "head.php"; 
+include "DBconnection.php"; 
+?>
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,9 +22,9 @@
   
   
   <?php
-  date_default_timezone_set('Asia/Amman');
-include "head.php"; 
-include "DBconnection.php"; 
+
+
+
 
 
 $jordanid= $_GET["jordanid"];
@@ -34,6 +41,7 @@ $phone=$arr["phone"];
 $address=$arr["address"];
 $job=$arr["job"];
 $sex=$arr["sex"];
+
 if($sex=="ذكر"){
     $imgUrl="css/avatar7.png";
 }
@@ -45,7 +53,7 @@ else{
 
     ?>
 
-  <div class="container">
+  <div class="container" id="html">
     <div class="main-body">
     
           <!-- Breadcrumb -->
@@ -66,13 +74,12 @@ else{
 
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
  
-  <button  class="btn btn  btn-outline-info" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"> تسديد مبلغ</button>
+  <button  class="btn btn  btn-outline-info" type="button"     id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"> تسديد مبلغ</button>
 
-    <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"  autocomplete="off"> اضافة مبلغ</button>
+    <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" > اضافة مبلغ</button>
+    <button  class="btn btn btn-outline-success" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal3" data-whatever="@mdo" > اضافة حالة</button>
 
-  <label class="btn btn-outline-success">
-    <input type="radio" name="options" id="option3" autocomplete="off"> اضافة حالة
-  </label>
+ 
 </div>
                     </div>
                   </div>
@@ -134,69 +141,7 @@ else{
                   </div>
                   <hr>
                   <div class="row">
-                    <!-- <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+               
 
 
 
@@ -286,15 +231,27 @@ else{
 
         <ul class="list-group">
             <li class="list-group-item text-muted">Inbox</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-
+              <?php
+                 $jordanid= $_GET["jordanid"];
+          $stmt = $link->prepare("SELECT * FROM `status` WHERE `jordanid`=:jid  ORDER BY `status`.`date` DESC");
+          $stmt->bindParam(':jid', $jordanid);
+          $stmt->execute();
+          $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $c=0;
+          foreach ($arr as $value) {
+       
+     
+       
+           echo "
+           <li class=\"list-group-item text-right\"><pre class=\"pull-left\">$value[status]</pre> $value[date] </li>
+        ";
+        
+       
+       
+           
+         }
+            ?>
+         
         </ul>
 
     </div>
@@ -303,18 +260,29 @@ else{
 
         <hr>
         
-
         <?php
-                  $jordanid= $_GET["jordanid"];
+               
+
+                  $stmt = $link->prepare("SELECT SUM(amount) AS paied FROM `pasys` WHERE `clintid`=:jid GROUP BY `clintid`;");
+                  $stmt->bindParam(':jid', $jordanid);
+               
+                  $stmt->execute();
+                  $arrPays = $stmt->fetch(PDO::FETCH_ASSOC);
+                  $totalPaied=0;
+                  if ($arrPays !=null) {
+                    $totalPaied=$arrPays["paied"];}
+
+
+                  
                   $stmt = $link->prepare("SELECT * FROM required_amounts WHERE clintid = :jid");
                   $stmt->bindParam(':jid', $jordanid);
                
                   $stmt->execute();
                   $arrPays = $stmt->fetch(PDO::FETCH_ASSOC);
                   $name;
-                  $OrgialTotal="null";
-                  $monthg="null";
-                  $tdated="null";
+                  $OrgialTotal=0;
+                  $monthg=0;
+                  $tdated=0;
                   $mpay=0;
                   if ($arrPays !=null) {
               $OrgialTotal=$arrPays["total"];
@@ -328,9 +296,31 @@ else{
                 <div class="col-xs-6">
                     <label for="first_name">
                         <h4>القيمة المطلوبة</h4></label>
-                    <input type="text" class="form-control" name="total" id="first_name"  value="<?php echo $OrgialTotal;?>" disabled>
+                    <input type="text" class="form-control" name="total" id="first_name"  value="<?php echo $OrgialTotal."JD";?>" disabled>
                 </div>
             </div>
+
+
+
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="phone">
+                        <h4>  القيمة المسددة</h4></label>
+                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $totalPaied;?>" disabled>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-xs-6">
+                    <label for="phone">
+                        <h4>   المبلغ المتبقي</h4></label>
+                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $OrgialTotal-$totalPaied;?>" disabled>
+                </div>
+            </div>
+
             <div class="form-group">
 
                 <div class="col-xs-6">
@@ -360,13 +350,7 @@ else{
 </div>
 
             
-            <!-- <div class="form-group">
-                <div class="col-xs-12">
-                    <br>
-                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                </div>
-            </div> -->
+         
 
       
     </div>
@@ -406,15 +390,15 @@ else{
         <form method="post">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
-            <input type="number"   name="total" class="form-control" id="recipient-name">
+            <input type="number"   name="total" class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label"> عدد الاشهر</label>
-            <input type="number"   name="months"  class="form-control" id="recipient-name">
+            <input type="number"   name="months"  class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">يوم الاسنحقاق</label>
-            <select class="form-select" name="date" aria-label="Default select example"  id="select">
+            <select class="form-select" name="date" aria-label="Default select example"  id="select" required>
   
           
 <script>
@@ -467,7 +451,7 @@ for (let index = 1; index < 29; index++) {
     <form method="post">
       <div class="form-group">
         <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
-        <input type="number"   name="amount" class="form-control" id="recipient-name">
+        <input type="number"   name="amount" class="form-control" id="recipient-name" required>
       </div>
     
 
@@ -482,6 +466,47 @@ for (let index = 1; index < 29; index++) {
 </div>
 </div>
 
+</div>
+
+
+
+
+
+
+
+<!-- 
+اضافة حالة --> 
+
+<div class="container">
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">اضافةحالة </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form method="post">
+    <div class="form-group">
+            <label for="message-text" class="col-form-label">اضافةحالة</label>
+            <textarea class="form-control" id="message-text" name="status"></textarea>
+          </div>
+    
+
+
+      <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+    <button name="submit3" type="submit" class="btn btn-primary"> اضافة</button>
+  </div>
+    </form>
+  </div>
+
+</div>
+</div>
+</div>
 
 
 
@@ -496,26 +521,19 @@ for (let index = 1; index < 29; index++) {
 
 
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
 
 
 
 <?php 
 
-$date=date("Y-m-d h:i:sa");
+$date=date("Y-m-d");
 // اضافة دفعة
 if( isset ($_POST["submit2"])){
 
     
   
 $amount=$_POST['amount'];
+
 
   if(is_integer((int)$amount)){
     $stmt = $link->prepare("INSERT INTO `pasys` (`clintid`, `amount`, `date`)  
@@ -525,6 +543,17 @@ $amount=$_POST['amount'];
     $stmt->bindParam(2, $amount);
     $stmt->bindParam(3, $date);
     $stmt->execute();
+
+
+    $stmt = $link->prepare("DELETE FROM notifications WHERE `notifications`.`jordanid` = :da");
+    
+
+
+    $stmt->bindParam(":da", $jordanid);
+
+    $stmt->execute();
+
+
 
 
     $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
@@ -629,4 +658,62 @@ else{
   }
 }
 }
+
+
+
+
+
+// اضافة حالة
+
+
+
+if( isset ($_POST["submit3"])){
+
+    
+  
+  
+ 
+      $status=$_POST['status'];
+      $stmt = $link->prepare("INSERT INTO `status` ( `jordanid`, `status`, `date`) VALUES (?,?,?)");
+      
+      $stmt->bindParam(1, $jordanid);
+      $stmt->bindParam(2, $status);
+      $stmt->bindParam(3, $date);
+      $stmt->execute();
+  
+  
+  
+  
+  
+      $amount2=1;
+      $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
+      VALUES (?,?,?,?,?);");
+      $opration= "اضافة حالة";
+      $date=date(" Y-m-d h:i:sa");
+      $stmt->bindParam(1, $jordanid);
+      $stmt->bindParam(2,$opration);
+      $stmt->bindParam(3, $amount2);
+      $stmt->bindParam(4,$date);
+      $stmt->bindParam(5,$_SESSION['username']);
+      $stmt->execute();
+  
+      echo ' <script> alert("تم التسجيل بنجاح")</script>';
+      echo "<meta http-equiv='refresh' content='0'>";
+  }
+
 ?>
+
+
+<script type="text/javascript">  
+document.body.requestFullscreen();
+</script> 
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

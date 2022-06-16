@@ -109,24 +109,23 @@ echo " <script> alert(\"الرقم الوطني موجود \")</script>";
     }
     else{
 
-   $jordanid= $_POST["jordanid"];
-   $name= $_POST["name"];
-   $jordanid= $_POST["jordanid"];
-    $address=$_POST["address"];
-    $phone=$_POST["phone"];
-    $job=$_POST["job"];
-    $sex= $_POST["sex"];
+   $jordanid2= $_POST["jordanid"];
+   $name2= $_POST["name"];
+    $address2=$_POST["address"];
+    $phone2=$_POST["phone"];
+    $job2=$_POST["job"];
+    $sex2= $_POST["sex"];
 
-    $stmt = $link->prepare("INSERT INTO `clients` (`name`, `jordanid`, `phone`, `address`, `job`, `sex`)
+    $stmt2 = $link->prepare("INSERT INTO `clients` (`name`, `jordanid`, `phone`, `job`, `address`,`sex`)  
     VALUES (?,?,?,?,?,?);");
     
-    $stmt->bindParam(1, $name);
-    $stmt->bindParam(2, $jordanid);
-    $stmt->bindParam(3, $phone);
-    $stmt->bindParam(4, $address);
-    $stmt->bindParam(5, $job);
-    $stmt->bindParam(6, $sex);
-    $stmt->execute();
+    $stmt2->bindParam(1, $name2);
+    $stmt2->bindParam(2, $jordanid2);
+    $stmt2->bindParam(3, $phone2);
+    $stmt2->bindParam(4,$job2);
+    $stmt2->bindParam(5, $address2);
+    $stmt2->bindParam(6, $sex2);
+    $stmt2->execute();
     echo ' <script> alert("تم التسجيل بنجاح")</script>';
  
 }
