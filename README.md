@@ -5,7 +5,7 @@
 
 ## login page
 ![log or sign in](/secreenshts/login.png)
--  الدخول للحساب المنشأ سابقاً
+-  صفحة تسجيل الدخول للحساب
 
 ## main page
 ![main site page](/secreenshts/dashboard.png)
