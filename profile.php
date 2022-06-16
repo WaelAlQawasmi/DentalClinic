@@ -40,6 +40,7 @@ $phone=$arr["phone"];
 $address=$arr["address"];
 $job=$arr["job"];
 $sex=$arr["sex"];
+
 if($sex=="ذكر"){
     $imgUrl="css/avatar7.png";
 }
@@ -291,15 +292,27 @@ else{
 
         <ul class="list-group">
             <li class="list-group-item text-muted">Inbox</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-            <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-
+              <?php
+                 $jordanid= $_GET["jordanid"];
+          $stmt = $link->prepare("SELECT * FROM `status` WHERE `jordanid`=:jid  ORDER BY `status`.`date` DESC");
+          $stmt->bindParam(':jid', $jordanid);
+          $stmt->execute();
+          $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $c=0;
+          foreach ($arr as $value) {
+       
+     
+       
+           echo "
+           <li class=\"list-group-item text-right\"><pre class=\"pull-left\">$value[status]</pre> $value[date] </li>
+        ";
+        
+       
+       
+           
+         }
+            ?>
+         
         </ul>
 
     </div>
@@ -309,7 +322,7 @@ else{
         <hr>
         
         <?php
-                  $jordanid= $_GET["jordanid"];
+               
 
                   $stmt = $link->prepare("SELECT SUM(amount) AS paied FROM `pasys` WHERE `clintid`=:jid GROUP BY `clintid`;");
                   $stmt->bindParam(':jid', $jordanid);

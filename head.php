@@ -96,6 +96,10 @@ $aftertwoday=date('d', strtotime(' + 2 days'));
                   الاشعارات
                         </a>
                     </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="./exportExal.php">  النسخ الاحتياطي</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./logout.php">تسجيل خروج</a>
                     </li>
