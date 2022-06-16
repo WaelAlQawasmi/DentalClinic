@@ -72,13 +72,12 @@ else{
 
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
  
-  <button  class="btn btn  btn-outline-info" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"> تسديد مبلغ</button>
+  <button  class="btn btn  btn-outline-info" type="button"     id="option2"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"> تسديد مبلغ</button>
 
-    <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"  autocomplete="off"> اضافة مبلغ</button>
+    <button  class="btn btn btn-outline-primary" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" > اضافة مبلغ</button>
+    <button  class="btn btn btn-outline-success" type="button" id="option2"  data-toggle="modal" data-target="#exampleModal3" data-whatever="@mdo" > اضافة حالة</button>
 
-  <label class="btn btn-outline-success">
-    <input type="radio" name="options" id="option3" autocomplete="off"> اضافة حالة
-  </label>
+ 
 </div>
                     </div>
                   </div>
@@ -445,15 +444,15 @@ else{
         <form method="post">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
-            <input type="number"   name="total" class="form-control" id="recipient-name">
+            <input type="number"   name="total" class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label"> عدد الاشهر</label>
-            <input type="number"   name="months"  class="form-control" id="recipient-name">
+            <input type="number"   name="months"  class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">يوم الاسنحقاق</label>
-            <select class="form-select" name="date" aria-label="Default select example"  id="select">
+            <select class="form-select" name="date" aria-label="Default select example"  id="select" required>
   
           
 <script>
@@ -506,7 +505,7 @@ for (let index = 1; index < 29; index++) {
     <form method="post">
       <div class="form-group">
         <label for="recipient-name" class="col-form-label">قيمة المبلغ</label>
-        <input type="number"   name="amount" class="form-control" id="recipient-name">
+        <input type="number"   name="amount" class="form-control" id="recipient-name" required>
       </div>
     
 
@@ -521,7 +520,47 @@ for (let index = 1; index < 29; index++) {
 </div>
 </div>
 
+</div>
 
+
+
+
+
+
+
+<!-- 
+اضافة دفعة --> 
+
+<div class="container">
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">اضافةحالة </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form method="post">
+    <div class="form-group">
+            <label for="message-text" class="col-form-label">اضافةحالة</label>
+            <textarea class="form-control" id="message-text" name="status"></textarea>
+          </div>
+    
+
+
+      <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+    <button name="submit3" type="submit" class="btn btn-primary"> اضافة</button>
+  </div>
+    </form>
+  </div>
+
+</div>
+</div>
+</div>
 
 
 
@@ -680,4 +719,45 @@ else{
   }
 }
 }
+
+
+
+// اضافة حالة
+
+
+
+if( isset ($_POST["submit3"])){
+
+    
+  
+  
+ 
+      $status=$_POST['status'];
+      $stmt = $link->prepare("INSERT INTO `status` ( `jordanid`, `status`, `date`) VALUES (?,?,?)");
+      
+      $stmt->bindParam(1, $jordanid);
+      $stmt->bindParam(2, $status);
+      $stmt->bindParam(3, $date);
+      $stmt->execute();
+  
+  
+  
+  
+  
+      $amount2=1;
+      $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `ammount`, `date`, `user`)
+      VALUES (?,?,?,?,?);");
+      $opration= "اضافة حالة";
+      $date=date(" Y-m-d h:i:sa");
+      $stmt->bindParam(1, $jordanid);
+      $stmt->bindParam(2,$opration);
+      $stmt->bindParam(3, $amount2);
+      $stmt->bindParam(4,$date);
+      $stmt->bindParam(5,$_SESSION['username']);
+      $stmt->execute();
+  
+      echo ' <script> alert("تم التسجيل بنجاح")</script>';
+      echo "<meta http-equiv='refresh' content='0'>";
+  }
+
 ?>

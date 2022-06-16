@@ -1,5 +1,6 @@
 
  <?php
+ 
  session_start();
  if(!isset($_SESSION['username']))
  {
@@ -88,7 +89,7 @@ $aftertwoday=date('d', strtotime(' + 2 days'));
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">إحصائيات</a>
+                        <a class="nav-link" href="statistics.php">إحصائيات</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " id="myBtn"  href="#">

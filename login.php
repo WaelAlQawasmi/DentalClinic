@@ -1,5 +1,6 @@
 <?php
-include "DBconnection.php"; ?>
+include "DBconnection.php";
+session_start(); ?>
 
 <!DOCTYPE html>
 <html>
