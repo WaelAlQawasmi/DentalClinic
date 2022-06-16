@@ -126,11 +126,78 @@ $theclients=$arr["theclients"];
 		   </div>
 		</div>
 	  </div> 
+
 	</div>
+
+	<script
+src="https://www.gstatic.com/charts/loader.js">
+</script>
+
+<div style="
+    padding: 5%;
+    display: flex;
+    justify-content: space-around;
+">
+	<div id="myChart" style="width:100%; max-width:600px; height:500px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 600px; height: 500px;"><div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;" aria-label="A chart."><svg width="600" height="500" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_0"><clipPath id="_ABSTRACT_RENDERER_ID_1"><rect x="115" y="96" width="371" height="309"></rect></clipPath></defs><rect x="0" y="0" width="600" height="500" stroke="none" stroke-width="0" fill="#f7f7ff"></rect><g><text text-anchor="start" x="115" y="73.05" font-family="Arial" font-size="13" font-weight="bold" stroke="none" stroke-width="0" fill="#000000">الالتزام بالدفعات</text><rect x="115" y="62" width="371" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><rect x="115" y="96" width="371" height="309" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(http://127.0.0.1/DentalClinic/statistics.php#_ABSTRACT_RENDERER_ID_1)"><g><rect x="115" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="208" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="300" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="393" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="485" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="161" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="254" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="346" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="439" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="404" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="353" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="301" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="250" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="199" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="147" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="96" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="378" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="327" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="276" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="224" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="173" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="122" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect></g><g><rect x="115" y="404" width="371" height="1" stroke="none" stroke-width="0" fill="#333333"></rect></g><g><path d="M115.5,301.8333333333333L300.5,199.16666666666666L485.5,96.5" stroke="#3366cc" stroke-width="2" fill-opacity="1" fill="none"></path></g></g><g></g><g><g><text text-anchor="middle" x="115.5" y="424.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">10</text></g><g><text text-anchor="middle" x="208" y="424.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">15</text></g><g><text text-anchor="middle" x="300.5" y="424.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">20</text></g><g><text text-anchor="middle" x="393" y="424.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">25</text></g><g><text text-anchor="middle" x="485.5" y="424.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">30</text></g><g><text text-anchor="end" x="102" y="409.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">0</text></g><g><text text-anchor="end" x="102" y="357.7167" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">5</text></g><g><text text-anchor="end" x="102" y="306.3833" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">10</text></g><g><text text-anchor="end" x="102" y="255.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">15</text></g><g><text text-anchor="end" x="102" y="203.7167" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">20</text></g><g><text text-anchor="end" x="102" y="152.38330000000002" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">25</text></g><g><text text-anchor="end" x="102" y="101.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">30</text></g></g></g><g><g><text text-anchor="middle" x="300.5" y="467.55" font-family="Arial" font-size="13" font-style="italic" stroke="none" stroke-width="0" fill="#222222">Square Meters</text><rect x="115" y="456.5" width="371" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><text text-anchor="middle" x="48.55" y="250.5" font-family="Arial" font-size="13" font-style="italic" transform="rotate(-90 48.55 250.5)" stroke="none" stroke-width="0" fill="#222222">Price in Millions</text><path d="M37.49999999999999,405L37.50000000000001,96L50.50000000000001,96L50.49999999999999,405Z" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></path></g></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: 10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Price</th><th>Size</th></tr></thead><tbody><tr><td>10</td><td>10</td></tr><tr><td>20</td><td>20</td></tr><tr><td>30</td><td>30</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 510px; left: 610px; white-space: nowrap; font-family: Arial; font-size: 13px; font-weight: bold;">الالتزام بالدفعات</div><div></div></div></div>
+	<div id="myChart2" style="width:100%; max-width:600px; height:500px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 600px; height: 400px;"><div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;" aria-label="A chart."><svg width="600" height="400" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_2"><clipPath id="_ABSTRACT_RENDERER_ID_3"><rect x="115" y="77" width="371" height="247"></rect></clipPath></defs><rect x="0" y="0" width="600" height="400" stroke="none" stroke-width="0" fill="#f7f7ff"></rect><g><text text-anchor="start" x="115" y="54.05" font-family="Arial" font-size="13" font-weight="bold" stroke="none" stroke-width="0" fill="#000000">Density of Precious Metals, in g/cm^3</text><rect x="115" y="43" width="371" height="13" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><rect x="115" y="77" width="371" height="247" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(http://127.0.0.1/DentalClinic/statistics.php#_ABSTRACT_RENDERER_ID_3)"><g><rect x="115" y="323" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="282" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="241" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="200" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="159" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="118" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="77" width="371" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="115" y="303" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="262" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="221" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="180" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="139" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect><rect x="115" y="98" width="371" height="1" stroke="none" stroke-width="0" fill="#e6e6eb"></rect></g><g><rect x="117" y="242" width="71" height="81" stroke="#808080" stroke-width="1" fill="#808080"></rect><rect x="191" y="209" width="71" height="114" stroke="#76a7fa" stroke-width="1" fill="#76a7fa"></rect><rect x="265" y="193" width="71" height="130" stroke="none" stroke-width="0" fill-opacity="0.2" fill="#3366cc"></rect><rect x="339" y="144" width="71" height="179" stroke="#703593" stroke-width="4" fill="#c5a5cf"></rect><rect x="413" y="94" width="71" height="229" stroke="#871b47" stroke-width="8" stroke-opacity="0.6" fill-opacity="0.2" fill="#bc5679"></rect></g><g><rect x="115" y="323" width="371" height="1" stroke="none" stroke-width="0" fill="#333333"></rect></g></g><g></g><g><g><text text-anchor="middle" x="152.5" y="343.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#222222">2010</text></g><g><text text-anchor="middle" x="226.5" y="343.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#222222">2020</text></g><g><text text-anchor="middle" x="300.5" y="343.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#222222">2030</text></g><g><text text-anchor="middle" x="374.5" y="343.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#222222">2040</text></g><g><text text-anchor="middle" x="448.5" y="343.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#222222">2050</text></g><g><text text-anchor="end" x="102" y="328.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">0</text></g><g><text text-anchor="end" x="102" y="287.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">5</text></g><g><text text-anchor="end" x="102" y="246.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">10</text></g><g><text text-anchor="end" x="102" y="205.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">15</text></g><g><text text-anchor="end" x="102" y="164.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">20</text></g><g><text text-anchor="end" x="102" y="123.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">25</text></g><g><text text-anchor="end" x="102" y="82.05" font-family="Arial" font-size="13" stroke="none" stroke-width="0" fill="#444444">30</text></g></g></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: 10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Year</th><th>Visitations</th></tr></thead><tbody><tr><td>2010</td><td>10</td></tr><tr><td>2020</td><td>14</td></tr><tr><td>2030</td><td>16</td></tr><tr><td>2040</td><td>22</td></tr><tr><td>2050</td><td>28</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 410px; left: 610px; white-space: nowrap; font-family: Arial; font-size: 13px; font-weight: bold;">Density of Precious Metals, in g/cm^3</div><div></div></div></div>
+</div>
+	<script>
+google.charts.load('current',{packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+// Set Data
+var data = google.visualization.arrayToDataTable([
+  ['Price', 'Size'],
+ [10,10],[20,20],[30,30]
+]);
+// Set Options
+var options = {
+  title: 'الالتزام بالدفعات',
+  hAxis: {title: 'Square Meters'},
+  vAxis: {title: 'Price in Millions'},
+  backgroundColor: '#f7f7ff',
+
+  legend: 'none'
+};
+// Draw
+var chart = new google.visualization.LineChart(document.getElementById('myChart'));
+chart.draw(data, options);
+
+
+
+//other car
+var options = {
+        title: "الدفعات لكل شهر",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+		backgroundColor: '#f7f7ff',
+      };
+
+var data = google.visualization.arrayToDataTable([
+        ['الشهر', 'تم تحصيل', { role: 'style' } ],
+        ['7', 10, 'color: gray'],
+        ['8', 14, 'color: #76A7FA'],
+        ['9', 16, 'opacity: 0.2'],
+        ['10', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['11', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']
+      ]);
+	  var chart = new google.visualization.ColumnChart(document.getElementById('myChart2'));
+chart.draw(data, options);
+
+}
+</script>
+<script type="text/javascript">  
+document.body.requestFullscreen();
+</script> 
+
 </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
-
+	
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
