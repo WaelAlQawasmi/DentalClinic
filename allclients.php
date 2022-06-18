@@ -47,20 +47,20 @@ include "DBconnection.php";
     
  
 
-    <div class="form-check" style="
-    display: flex;
-    /* text-align: center; */
-    justify-content: space-around;
-">
-        <input class="form-check-input" type="checkbox" id="gridCheck1" style="
-    display: block;
-    margin-right: 15%;
-">
+    <div class="form-check" style="">
+
         <label class="form-check-label" for="gridCheck1" style="
-    display: block;
+
+    display: inline-block;
+    margin-left: 10vh;
 ">
-        الرقم الوطني
+        البحث من خلال الرقم الوطني 
         </label>
+
+
+        <input class="form-check-input" type="checkbox" id="gridCheck1" style="
+  display: inline-block;
+">
       </div>
       
 
