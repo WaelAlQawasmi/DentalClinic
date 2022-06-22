@@ -36,6 +36,7 @@ $jordanid= $_GET["jordanid"];
     $arr = $stmt->fetch(PDO::FETCH_ASSOC);
     $name;
     if ($arr) {
+      $id=$arr["id"];
 $name=$arr["name"];
 $jordanid=$arr["jordanid"];
 $phone=$arr["phone"];
@@ -60,7 +61,7 @@ else{
           <!-- Breadcrumb -->
       
           <!-- /Breadcrumb -->
-    
+          <form method="post">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -90,6 +91,7 @@ else{
 
 
             </div>
+         
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -98,7 +100,7 @@ else{
                       <h6 class="mb-0">الاسم الكامل </h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo  $name?>
+                  <input type="text"   name="name"style="border: none;  "class="form-control" value="<?php echo $name;?>"/>  
                     </div>
                   </div>
                   <hr>
@@ -107,9 +109,9 @@ else{
                       <h6 class="mb-0">رقم الهاتف</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo  $phone?>
+                  
   
-
+                    <input type="text" name="phone" style="border: none; "class="form-control" value="<?php echo $phone;?>"/>  
 
                     </div>
                   </div>
@@ -119,7 +121,9 @@ else{
                       <h6 class="mb-0">الرقم الوطني</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo  $jordanid?>
+                
+                    <input type="text" name="jordanid" style="border: none; "class="form-control" value="<?php echo $jordanid;?>" dise/>  
+
                     </div>
                   </div>
                   <hr>
@@ -128,7 +132,9 @@ else{
                       <h6 class="mb-0">العمل</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo  $job?>
+                    <input type="text" name="job"  style="border: none; "class="form-control" value="<?php echo $job;?>"/>  
+
+                  
                     </div>
                   </div>
                   <hr>
@@ -137,13 +143,19 @@ else{
                       <h6 class="mb-0">العنوان</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <?php echo  $address?>
+                    <input type="text" name="address" style="border: none; "class="form-control" value="<?php echo $address;?>"/>  
+
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                
-
+                  <div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+									<input type="button" class="btn btn-danger px-4" id="ennable_btn" value="تفعيل التعديل" onclick="changeEblity()">
+                  <button type="submit"  name="changBtn"class="btn btn-primary px-4" style="display:none;" id="edait" value="تعديل">تعديل </button>
+								</div>
+							</div>
 
 
             </div>
@@ -153,14 +165,35 @@ else{
 
 
         </div>
+        </form>
+
+        <script>
+  function changeEblity() {
+    document.getElementById("ennable_btn").style.display="none";
+
+    document.getElementById("edait").style.display="inline";
+  }
+</script>
+<?php
 
 
+if( isset ($_POST["changBtn"])){
 
 
+  $name=$_POST['name'];
+  $jordanid=$_POST['jordanid'];
+  $phone=$_POST['phone'];
+  $job=$_POST['job'];
+  $address=$_POST['address'];
 
+  $sql = "UPDATE `clients` SET `name` = ?, `jordanid` = ?, `phone` = ?, `job` = ?, `address` =? WHERE `clients`.`id` = ?";
+  $stmt= $link->prepare($sql);
+  $stmt->execute([$name, $jordanid, $phone, $job,$address, $id]);
+  echo " <script> alert(\"$_POST[name]تم التعديل بنجاح\")</script>";
+  echo" <meta http-equiv=\"refresh\" content=\"0;url=profile.php?jordanid=$jordanid\">";
+}
 
-
-
+?>
 
         <div class="col-sm-9" style="    margin: auto;">
 
