@@ -57,24 +57,19 @@ include "head.php"; ?>
         </div>
         <div class="col-md-6">
             <label for="inputCity" class="form-label">الوظيفة</label>
-            <input type="text"  name="job" class="form-control" id="inputCity">
+            <input type="text"  name="job" class="form-control" id="inputCity" required>
         </div>
 
         <div class="col-md-6" style="
         margin-top: 3vh;
     ">
                 <div class="form-check form-check-inline">
-                    <input name="sex" class="form-check-input" type="radio"  value="ذكر" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        ذكر
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input  name="sex" class="form-check-input" type="radio" name="flexRadioDefault" value="انثى" id="flexRadioDefault2" checked="">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        انثى
-                    </label>
-                </div>
+                <select name="sex" class="custom-select" id="inputGroupSelect01" required>
+                <option > </option>
+    <option value="ذكر">ذكر</option>
+    <option value="انثى">انثى</option>
+   
+  </select>
             </div>
    
         <div class="col-12" style="
@@ -97,7 +92,10 @@ include "DBconnection.php";
 
 if( isset ($_POST["submit"])){
 
-    
+    if($_POST["sex"]==null){
+        echo " <script> alert(\"  الرجاء تحديد الجنس \")</script>";
+    }
+    else {
    $jordanid= $_POST["jordanid"];
     $stmt = $link->prepare("SELECT * FROM clients WHERE jordanid = :jid");
     $stmt->bindParam(':jid', $jordanid);
@@ -128,6 +126,7 @@ echo " <script> alert(\"الرقم الوطني موجود \")</script>";
     $stmt2->execute();
     echo ' <script> alert("تم التسجيل بنجاح")</script>';
  
+}
 }
 }
 ?>

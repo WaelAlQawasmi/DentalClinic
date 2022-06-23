@@ -34,7 +34,7 @@ $stmt->execute([$the_date, $username]);
 <div  class="card">
   
  
-      <img style="max-height: 60vh; " src="images/bg-01.jpg"/>
+      <img style="height: 85vh; " src="images/bg-01.jpg"/>
   
      <h1 style="font-size:33px;     text-align: center;
 ">
