@@ -81,15 +81,23 @@ include "DBconnection.php";
 
   <?php
 
-   $stmt = $link->prepare("SELECT * FROM clients");
+   $stmt = $link->prepare("SELECT clients.name,clients.jordanid,required_amounts.total AS total_reqired,SUM(pasys.amount) AS pasys_amount FROM clients LEFT JOIN required_amounts ON clients.jordanid=required_amounts.clintid LEFT JOIN pasys ON pasys.clintid=clients.jordanid GROUP BY clients.jordanid;
+   ");
    $stmt->execute();
    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
    $c=0;
    foreach ($arr as $value) {
 
     $c++;
-
-    echo "<tr>
+   
+   
+if($value['total_reqired']==null||$value['total_reqired']-$value['pasys_amount']==0){
+ echo "<tr>";
+}
+else{
+  echo "<tr style='color:red'>";
+}
+    echo "
     <th scope=\"row\">$c</th>
     <td>$value[name]</td>
     <td>$value[jordanid]</td>

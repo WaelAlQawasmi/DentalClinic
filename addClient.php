@@ -65,7 +65,7 @@ include "head.php"; ?>
     ">
                 <div class="form-check form-check-inline">
                 <select name="sex" class="custom-select" id="inputGroupSelect01" required>
-                <option >اختار الحنس</option>
+                <option > </option>
     <option value="ذكر">ذكر</option>
     <option value="انثى">انثى</option>
    
