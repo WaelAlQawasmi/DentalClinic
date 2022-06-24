@@ -92,10 +92,11 @@ include "DBconnection.php";
    
    
 if($value['total_reqired']==null||$value['total_reqired']-$value['pasys_amount']==0){
- echo "<tr>";
+  echo "<tr style='color:red'>";
+
 }
 else{
-  echo "<tr style='color:red'>";
+  echo "<tr>";
 }
     echo "
     <th scope=\"row\">$c</th>
