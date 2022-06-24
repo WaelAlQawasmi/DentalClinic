@@ -9,6 +9,9 @@ include "DBconnection.php";
 ?>
 
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -61,11 +64,15 @@ else{
           <!-- Breadcrumb -->
       
           <!-- /Breadcrumb -->
-          <form method="post">
+         
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
+                <form method="post">
+              <button type="submit"  id="delete" name="delete" style=" display: none; border: #fff8dc00;color:red;background-color: white;" class=" w3-xxlarge fa fa-trash"></button> 
+  </form>
+              <form method="post">
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="<?php echo $imgUrl;?>" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
@@ -170,7 +177,7 @@ else{
         <script>
   function changeEblity() {
     document.getElementById("ennable_btn").style.display="none";
-
+    document.getElementById("delete").style.display="inline";
     document.getElementById("edait").style.display="inline";
   }
 </script>
@@ -369,7 +376,7 @@ if( isset ($_POST["changBtn"])){
                 <div class="col-xs-6">
                     <label for="phone">
                         <h4> عدد الاشهر</h4></label>
-                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $monthg;?>" disabled>
+                    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $mpay ;?>" disabled>
                 </div>
             </div>
 
@@ -379,7 +386,7 @@ if( isset ($_POST["changBtn"])){
 <div class="col-xs-6">
     <label for="phone">
         <h4>  قيمة الدفعة الشهرية</h4></label>
-    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo $mpay ." JD";?>" disabled>
+    <input type="text" class="form-control" name="phone" id="phone"  value="<?php echo  $monthg ." JD";?>" disabled>
 </div>
 </div>
 
@@ -427,7 +434,7 @@ if( isset ($_POST["changBtn"])){
             <input type="number"   name="total" class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label"> عدد الاشهر</label>
+            <label for="recipient-name" class="col-form-label">  قيمة الدفعة</label>
             <input type="number"   name="months"  class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
@@ -616,7 +623,29 @@ else{
 
 
 
+//حذف العميل
 
+if( isset ($_POST["delete"])){
+
+
+  $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `date`, `user`)
+    VALUES (?,?,?,?);");
+    $opration= "حذف العميل";
+    $date=date(" Y-m-d h:i:sa");
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2,$opration);
+    $stmt->bindParam(3,$date);
+    $stmt->bindParam(4,$_SESSION['username']);
+    $stmt->execute();
+  
+  $stmt = $link->prepare("DELETE FROM clients WHERE `clients`.`jordanid` = :da");
+      $stmt->bindParam(":da", $jordanid);
+
+    $stmt->execute(); 
+    echo " <script> alert(\"تم الحذف بنجاح\")</script>";
+    echo" <meta http-equiv=\"refresh\" content=\"0;url=allclients.php\">";
+
+}
 
 
 
