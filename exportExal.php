@@ -9,6 +9,8 @@ include "head.php";
 <html>
 <head>
 <title>Export MySQL Data to Excel using PHP</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet"
  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -28,8 +30,11 @@ include "head.php";
 <div class="col-sm-12">
 <div>
 <form action="#" method="post">
-<button type="submit" id="export" name="export"
- value="Export to excel" class="btn btn-success">Export To Excel</button>
+<button type="submit" id="export" name="export" 
+ value="Export to excel" onclick="hideExalViowEmailBtn()" class="btn btn-success">Export Excel</button>
+
+ <button    onclick="sendEmail()"
+ value="Export to excel" style="display:none;"  id="email" class="btn btn-danger">send Excel via email</button>
 </form>
 </div>
 </div>
@@ -57,10 +62,45 @@ include "head.php";
 <td><?php echo $item ['the_day']; ?></td>
 <td><?php echo $item ['paid']; ?></td>
 </tr>
-<?php } ?>
+<?php }  
+?>
 </tbody>
 </table>
 </div>
 
 </body>
+
+
+<script type="text/javascript">
+
+function proxy() {
+
+
+    $.ajax({
+        type: "Get",
+        url: "./mailer/mailer/index.php",
+        dataType: "json",
+        success: function(data) {
+            // alert(data.status);
+
+
+        },
+        error: function() {
+            alert("تم الارسال");
+        }
+    });
+}
+
+
+function sendEmail(){
+    setTimeout(proxy(), 3000);
+ // last arg is in milliseconds
+}
+
+function hideExalViowEmailBtn(){
+document.getElementById("export").style.display = "none";
+document.getElementById("email").style.display = "inline";
+ // last arg is in milliseconds
+}
+</script>
 </html>
