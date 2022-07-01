@@ -3,7 +3,7 @@
 include "DBconnection.php"; 
 //Store table records into an array
 
-  $stmt = $link->prepare("SELECT clients.name,clients.jordanid,clients.phone,clients.address,required_amounts.total AS required_amount,required_amounts.tdated AS the_day,SUM(pasys.amount) AS paid FROM `clients`LEFT JOIN required_amounts ON clients.jordanid=required_amounts.clintid LEFT JOIN pasys ON clients.jordanid=pasys.clintid GROUP BY pasys.clintid;");
+  $stmt = $link->prepare("SELECT clients.name,clients.jordanid,clients.phone,clients.address,required_amounts.total AS required_amount,required_amounts.tdated AS the_day,SUM(pasys.amount) AS paid FROM `clients`LEFT JOIN required_amounts ON clients.jordanid=required_amounts.clintid LEFT JOIN pasys ON clients.jordanid=pasys.clintid GROUP BY pasys.clintid,clients.jordanid;");
   $stmt->execute();
   $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $data = " ";
