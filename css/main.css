@@ -1,0 +1,27 @@
+#myInput {
+    display: block;
+    margin-right: 10%;
+    background-image: url('./css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#btn_add_user {
+    position: fixed;
+    bottom: 10vh;
+    right: 0%;
+    cursor: pointer;
+    border: 1px solid #3498db1a;
+    background-color: transparent;
+    height: 10vh;
+    width: 10vh;
+    color: #3498db;
+    border-radius: 50px;
+    font-size: 1.5em;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 60%);
+}
