@@ -69,7 +69,7 @@ date_default_timezone_set('Asia/Amman');
           <a class="nav-link" href="statistics.php">إحصائيات</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " id="myBtn" href="#">
+          <a class="nav-link" id="myBtn" href="#">
             الاشعارات
           </a>
         </li>
@@ -137,7 +137,28 @@ date_default_timezone_set('Asia/Amman');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- notofication content end -->
   <script src="js/dash.js"></script>
-  <script src="js/js.js"></script>
+  <script>
+    
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+  </script>
 
 </body>
 
