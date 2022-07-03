@@ -24,7 +24,7 @@
 -  بعد الضغط على ادخل بجانب اسم العميل في الصفحة السابقة تظهر صفحة تحوي جميع المعلومات المتعلقة بذاك العميل
 
  ## statistics page
- ![statistics of all site information](/secreenshts/statistic.png)
+ ![statistics of all site information](/secreenshts/statistics.png)
  - احصائيات تخص العمليات المالية المتعلقة بجميع العملاء
 
 ## export page
