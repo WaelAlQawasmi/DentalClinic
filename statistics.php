@@ -64,7 +64,25 @@ $theclients=$arr["theclients"];
   <body>
   
 
-<div class="container">
+<div class="container" id="container" style="display:none">
+    
+      <script>
+
+  let text;
+  let password = prompt("الرجاء ادخال الرقم السري");
+while(password!=82044066){
+if(password==null){
+break;
+}
+password = prompt("What's your favorite drink?", "Coca-Cola")
+}
+if(password==82044066){
+const myElement = document.getElementById("container");
+myElement.style.display= "block"
+}
+
+
+</script>
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
        <div class="col">
 		 <div class="card radius-10 border-start border-0 border-3 border-info">
