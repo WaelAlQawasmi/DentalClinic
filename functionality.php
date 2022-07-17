@@ -102,7 +102,7 @@ else{
 
 if( isset ($_POST["delete"])){
 
-
+include "DBconnection.php";
   $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `date`, `user`)
     VALUES (?,?,?,?);");
     $opration= "حذف العميل";
@@ -115,6 +115,31 @@ if( isset ($_POST["delete"])){
   
   $stmt = $link->prepare("DELETE FROM clients WHERE `clients`.`jordanid` = :da");
       $stmt->bindParam(":da", $jordanid);
+
+    $stmt->execute(); 
+    echo " <script> alert(\"تم الحذف بنجاح\")</script>";
+    echo" <meta http-equiv=\"refresh\" content=\"0;url=allclients.php\">";
+
+}
+
+
+
+
+function deleteStatus($id,$jordanid){
+include "DBconnection.php";
+
+  $stmt = $link->prepare("INSERT INTO `logs` (`clintid`, `type`, `date`, `user`)
+    VALUES (?,?,?,?);");
+    $opration= "حذف حالة";
+    $date=date(" Y-m-d h:i:sa");
+    $stmt->bindParam(1, $jordanid);
+    $stmt->bindParam(2,$opration);
+    $stmt->bindParam(3,$date);
+    $stmt->bindParam(4,$_SESSION['username']);
+    $stmt->execute();
+  
+  $stmt = $link->prepare("DELETE FROM `status` WHERE `status`.`id` = :da");
+      $stmt->bindParam(":da", $id);
 
     $stmt->execute(); 
     echo " <script> alert(\"تم الحذف بنجاح\")</script>";

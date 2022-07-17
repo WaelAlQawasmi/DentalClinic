@@ -14,7 +14,9 @@ include "DBconnection.php";
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<style>
+  .deleteItem{display:none;}
+  </style>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/profile.css">
@@ -177,6 +179,12 @@ include "DBconnection.php";
           document.getElementById("ennable_btn").style.display = "none";
           document.getElementById("delete").style.display = "inline";
           document.getElementById("edait").style.display = "inline";
+      
+
+        var deleteItem = document.getElementsByClassName('deleteItem');
+  for(i = 0; i < deleteItem.length; i++) {
+    deleteItem[i].style.display = 'inline';
+  }
         }
       </script>
       <?php
@@ -214,11 +222,12 @@ include "DBconnection.php";
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
+                  <!-- الدفعات -->
                   <tr>
                     <th>#</th>
                     <th>قيمة الدفعة</th>
                     <th>تاريخ الدفعة</th>
-
+                    <th> حذف</th>
                   </tr>
                 </thead>
                 <tbody id="items">
@@ -239,6 +248,7 @@ include "DBconnection.php";
     <th scope=\"row\">$c</th>
     <td>$value[amount]</td>
     <td>$value[date]</td>
+    <td>   <a   href=\"./delete.php?deleteid=$value[id]&delete_opration=delete_payed&jordanid=$jordanid\"style=\"  border: #fff8dc00;color:red;\" class=\" w3-xxlarge fa fa-trash deleteItem \"></a> </td>
  
   </tr>";
                   }
@@ -262,10 +272,12 @@ include "DBconnection.php";
           <!--/tab-pane-->
           <div class="tab-pane" id="messages">
 
+
+          <!-- السجل الطبي -->
             <h2></h2>
 
             <ul class="list-group">
-              <li class="list-group-item text-muted">Inbox</li>
+              <li class="list-group-item text-muted">السجل الطبي</li>
               <?php
               $jordanid = $_GET["jordanid"];
               $stmt = $link->prepare("SELECT * FROM `status` WHERE `jordanid`=:jid  ORDER BY `status`.`date` DESC");
@@ -278,7 +290,8 @@ include "DBconnection.php";
 
 
                 echo "
-           <li class=\"list-group-item text-right\"><pre class=\"pull-left\">$value[status]</pre> $value[date] </li>
+           <li class=\"list-group-item text-right\">   <a   href=\"./delete.php?deleteid=$value[id]&delete_opration=delete_status&jordanid=$jordanid\"style=\"  border: #fff8dc00;color:red;\" class=\" w3-xxlarge fa fa-trash deleteItem \"></a>
+           <pre class=\"pull-left\">$value[status]</pre> $value[date] </li>
         ";
               }
               ?>
