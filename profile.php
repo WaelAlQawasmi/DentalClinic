@@ -174,6 +174,7 @@ include "DBconnection.php";
       </div>
       </form>
 
+     
       <script>
         function changeEblity() {
           document.getElementById("ennable_btn").style.display = "none";
@@ -222,12 +223,12 @@ include "DBconnection.php";
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
-                  <!-- الدفعات -->
                   <tr>
                     <th>#</th>
                     <th>قيمة الدفعة</th>
                     <th>تاريخ الدفعة</th>
                     <th> حذف</th>
+                    <th> تعديل</th>
                   </tr>
                 </thead>
                 <tbody id="items">
@@ -249,6 +250,7 @@ include "DBconnection.php";
     <td>$value[amount]</td>
     <td>$value[date]</td>
     <td>   <a   href=\"./delete.php?deleteid=$value[id]&delete_opration=delete_payed&jordanid=$jordanid\"style=\"  border: #fff8dc00;color:red;\" class=\" w3-xxlarge fa fa-trash deleteItem \"></a> </td>
+ <td>  <a href=\"JavaScript:newPopup('./update.php?value=$value[amount]&id=$value[id]&type=amount');\"> <img src=\"./images/updated.png\" width=\"20\" height=\"20\" viewbox=\"0 0 24 24\"></a> </td>
  
   </tr>";
                   }
@@ -272,12 +274,10 @@ include "DBconnection.php";
           <!--/tab-pane-->
           <div class="tab-pane" id="messages">
 
-
-          <!-- السجل الطبي -->
             <h2></h2>
 
             <ul class="list-group">
-              <li class="list-group-item text-muted">السجل الطبي</li>
+              <li class="list-group-item text-muted">Inbox</li>
               <?php
               $jordanid = $_GET["jordanid"];
               $stmt = $link->prepare("SELECT * FROM `status` WHERE `jordanid`=:jid  ORDER BY `status`.`date` DESC");
@@ -289,9 +289,11 @@ include "DBconnection.php";
 
 
 
-                echo "
+               echo "
            <li class=\"list-group-item text-right\">   <a   href=\"./delete.php?deleteid=$value[id]&delete_opration=delete_status&jordanid=$jordanid\"style=\"  border: #fff8dc00;color:red;\" class=\" w3-xxlarge fa fa-trash deleteItem \"></a>
-           <pre class=\"pull-left\">$value[status]</pre> $value[date] </li>
+           <pre class=\"pull-left\">$value[status]</pre> $value[date] 
+           <a href=\"JavaScript:newPopup('./update.php?value=$value[status]&id=$value[id]&type=status');\"> <img src=\"./images/updated.png\" width=\"20\" height=\"20\" viewbox=\"0 0 24 24\"></a>
+           </li>
         ";
               }
               ?>
@@ -332,6 +334,9 @@ include "DBconnection.php";
             if ($arrPays != null) {
               $OrgialTotal = $arrPays["total"];
               $monthg = $arrPays["monthg"];
+              if($monthg==0){
+                 $monthg=1; 
+              }
               $tdated = $arrPays["tdated"];
               $mpay = $OrgialTotal / $monthg;
             }
@@ -568,7 +573,13 @@ include "DBconnection.php";
 
 
 
-
+  <script type="text/javascript">
+        // Popup window code
+        function newPopup(url) {
+            popupWindow = window.open(
+                url, 'popUpWindow', 'height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+        }
+    </script>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
